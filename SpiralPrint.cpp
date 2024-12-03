@@ -11,11 +11,11 @@ void spiralOrder(vector<vector<int>>&vec)
 
     int direction = 0;
 
-    while(true){
+    while(left <= right && top <= bottom){
         //left -> right
         if (direction == 0)
         {
-            for (int col = left; col < right; col++)
+            for (int col = left; col <= right; col++)
             {
                 cout << vec[top][col] << " ";
             }
@@ -41,12 +41,13 @@ void spiralOrder(vector<vector<int>>&vec)
         }
         //bottom -> top
         else{
-            for (int i = left; i >= top; i++)
+            for (int row = bottom; row >= top; row--)
             {
-                cout << vec[i][left] << " ";
+                cout << vec[row][left] << " ";
             }
             left++;
         }
+        direction = (direction + 1) % 4; //so that the value of direction stays between 0 -> 3
     }
     
     
@@ -56,7 +57,7 @@ int main()
 {
     int row, column;
     cout << "Enter row and column" << endl;
-
+    cin >> row >> column;
     vector<vector<int>> vec(row,vector<int>(column));
     
     //input
@@ -68,7 +69,17 @@ int main()
             cin >> vec[i][j];
         }
     }
+    cout << endl;
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            cout << vec[i][j] << " ";
+        }
+        cout << endl;
+    }
     
+
     spiralOrder(vec);
     return 0;
 }
