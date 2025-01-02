@@ -78,6 +78,7 @@ int main()
         }
         cout << endl;
     }
+    cout << endl;
     
 
     spiralOrder(vec);
